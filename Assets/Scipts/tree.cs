@@ -46,7 +46,7 @@ public class Tree : MonoBehaviour
         player.HP -= 15;
 
         UIManager.instance.ShowNotiText(
-            $"Hurt ow -15\nHP: {player.HP}"
+            $"Hurt -15\nHP: {player.HP}"
         );
 
         if (player.HP <= 0)

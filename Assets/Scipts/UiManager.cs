@@ -1,15 +1,25 @@
 using UnityEngine;
 using TMPro;
+
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text notitext;
-    public static UIManager instance;
+    [SerializeField]
+    private TMP_Text notiText;
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    [SerializeField]
+    private GameObject restartButton;
+
+    [SerializeField]
+    private Player player;
+
+    public static UIManager Instance;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
 
@@ -23,6 +33,20 @@ public class UIManager : MonoBehaviour
 
     public void ShowNotiText(string s)
     {
-        notitext.text = s;
+        notiText.text = s;
+    }
+
+    public void RestartGame()
+    {
+        player.transform.position = new Vector3(0f, 88.2f, -86.3f);
+        player.HP = 100;
+        ShowNotiText("Restart");
+        Time.timeScale = 1f;
+        ShowHideRestartButton(false);
+    }
+
+    public void ShowHideRestartButton(bool flag)
+    {
+        restartButton.SetActive(flag);
     }
 }
